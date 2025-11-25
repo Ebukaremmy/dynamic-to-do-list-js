@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
-    // Add Task function (Task 0 checker expects this exact structure)
+    // Task 0 addTask function (pure DOM, no Local Storage)
     function addTask() {
-        const taskText = taskInput.value.trim(); // Must be exactly like this
+        const taskText = taskInput.value.trim(); // must be exactly like this
         if(taskText === "") {
             alert("Please enter a task.");
             return;
         }
 
-        // Create new list item
+        // Create list item
         const li = document.createElement('li');
         li.textContent = taskText;
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         removeBtn.textContent = "Remove";
         removeBtn.classList.add('remove-btn');
 
-        // Remove task from list
+        // Remove task on click
         removeBtn.onclick = () => {
             taskList.removeChild(li);
         };
@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     addButton.addEventListener('click', addTask);
     taskInput.addEventListener('keypress', (event) => {
-        if(event.key === 'Enter') {
-            addTask();
-        }
+        if(event.key === 'Enter') addTask();
     });
 });
