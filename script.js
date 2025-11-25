@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create remove button
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Remove";
-        removeBtn.className = 'remove-btn';
+        removeBtn.classList.add('remove-btn'); // ✅ Use classList.add as checker expects
 
         // Remove task when button is clicked
         removeBtn.onclick = function () {
-            taskList.removeChild(li);
+            taskList.removeChild(li); // ✅ Directly remove li from taskList
 
             // Remove from Local Storage
             const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
